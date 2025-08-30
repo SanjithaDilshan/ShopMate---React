@@ -4,7 +4,7 @@ import Loading from "../assets/Loading.gif";
 
 export const ProductList = () => {
     const [url, setUrl] = useState("http://localhost:8000/products");
-    const { data: products, loading, error } = useFetch(url);
+    const { data: products, loading, error } = useFetch(url, { content: "ABC"});
 
     return (
     <section>
@@ -12,7 +12,9 @@ export const ProductList = () => {
         <button onClick={() => setUrl("http://localhost:8000/products")}>All</button>
         <button onClick={() => setUrl("http://localhost:8000/products?in_stock=true")}>In Stock</button>
       </div>
+
       { loading && <p className="loading"><img src={Loading} alt="" /></p>}
+
       { error && <p>{error}</p>}
       
 
